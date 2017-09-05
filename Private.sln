@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "BP_ocr", "BP_ocr.pyproj", "{6BEA3374-22FB-489D-8EB4-4701E6598E60}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "BP_ocr", "BP_ocr\BP_ocr.pyproj", "{6BEA3374-22FB-489D-8EB4-4701E6598E60}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Matplotlib及Seaborn使用教程", "..\Matplotlib及Seaborn使用教程\Matplotlib及Seaborn使用教程.pyproj", "{5FA4AB1E-6215-486F-9048-349302B0EC46}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Matplotlib及Seaborn使用教程", "Matplotlib及Seaborn使用教程\Matplotlib及Seaborn使用教程.pyproj", "{5FA4AB1E-6215-486F-9048-349302B0EC46}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "高德API_Python解决租房问题", "高德API_Python解决租房问题\高德API_Python解决租房问题.pyproj", "{88CD7314-7876-4BD2-8D6B-EC4C05C0D034}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,8 @@ Global
 		{6BEA3374-22FB-489D-8EB4-4701E6598E60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FA4AB1E-6215-486F-9048-349302B0EC46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5FA4AB1E-6215-486F-9048-349302B0EC46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88CD7314-7876-4BD2-8D6B-EC4C05C0D034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88CD7314-7876-4BD2-8D6B-EC4C05C0D034}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

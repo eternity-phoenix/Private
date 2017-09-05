@@ -50,7 +50,7 @@ class OCRNeuralNetwork(object):
         hidden_layer_bias	隐藏-输出层偏置向量	    10 * 1
         y2	                输出层	                10 * 1
         '''
-        if (not os.path.isfile(OCRNeuralNetwork.NN_FILE_PATH) or not use_file):
+        if not os.path.isfile(OCRNeuralNetwork.NN_FILE_PATH) or not use_file:
             # 初始化神经网络
             self.theta1 = self._rand_initialize_weights(400, num_hidden_nodes)
             self.theta2 = self._rand_initialize_weights(num_hidden_nodes, 10)
@@ -58,8 +58,9 @@ class OCRNeuralNetwork(object):
             self.hidden_layer_bias = self._rand_initialize_weights(1, 10)
 
             # 训练并保存
-            TrainData = namedtuple('TrainData', ['y0', 'label'])
-            self.train([TrainData(self.data_matrix[i], int(self.data_labels[i])) for i in training_indices])
+            # TrainData = namedtuple('TrainData', ['y0', 'label'])
+            # self.train([TrainData(self.data_matrix[i], int(self.data_labels[i])) for i in training_indices])
+            self.train([{'y0' : self.data_matrix[i], 'label' : int(self.data_labels[i])} for i in training_indices])
             self.save()
         else:
             # 如果nn.json存在则加载

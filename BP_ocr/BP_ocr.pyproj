@@ -29,6 +29,9 @@
     <Content Include="节点计算.png" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="neural_network_design.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ocr.py" />
     <Compile Include="server.py" />
   </ItemGroup>

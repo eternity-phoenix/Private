@@ -11,7 +11,7 @@
         }
 
         info(message) {
-            this.setStyle('color', 'yellow');
+            this.setStyle('color', 'green');
             this.show(message, 3000);
         }
 
@@ -126,25 +126,26 @@
         onMouseMove: function(e, ctx, canvas) {
             if(!canvas.isDrawing)
                 return;
-            this.fillSquare(ctx, e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop)
+            this.fillSquare(ctx, e.offsetX, e.offsetY);
         },
 
         onMouseDown: function(e, ctx, canvas) {
             if(e.which !== 1) //左键
                 return;
             canvas.isDrawing = true;
-            this.fillSquare(ctx, e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+            this.fillSquare(ctx, e.offsetX, e.offsetY);
         },
 
         onMouseUp: function(e, ctx, canvas) {
             canvas.isDrawing = false;
         },
 
-        fillSquare: function(ctx, x, y) {
+        fillSquare: function (ctx, x, y) {
+            console.info(x + '.' + y);
             let xPixel = Math.floor(x / this.PIXEL_WIDTH);
             let yPixel = Math.floor(y / this.PIXEL_WIDTH);
             // 在这里存储输入
-            this.data[((xPixel - 1) * this.TRANSLATE_WIDTH + yPixel) - 1] = 1;
+            this.data[xPixel * this.TRANSLATE_WIDTH + yPixel] = 1;
 
             ctx.fillStyle = this.WHITE; // 白色
             ctx.fillRect(xPixel * this.PIXEL_WIDTH, yPixel * this.PIXEL_WIDTH, this.PIXEL_WIDTH, this.PIXEL_WIDTH);
@@ -196,9 +197,10 @@
                 this.INFO.error('Server returned status ' + xmlHttp.status);
                 return;
             }
-            let responseJson = JSON.parse(xmlHttp.responseText);
-            if(xmlHttp.responseText && responseJson.type === 'test') {
-                this.INFO.info("The neural network predicts you wrote a '" + responseJson.result + "'");
+            if (xmlHttp.responseText) {
+                let responseJson = JSON.parse(xmlHttp.responseText);
+                if (responseJson.type === 'test')
+                    this.INFO.info("The neural network predicts you wrote a '" + responseJson.result + "'");
             }
         },
 
