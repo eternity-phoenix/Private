@@ -92,7 +92,7 @@
             let ctx = canvas.getContext('2d');
 
             this.INFO = new Info(document.getElementById('info'));
-            this.data = new Array(this.CANVAS_WIDTH * this.CANVAS_WIDTH);
+            this.data = new Array(this.TRANSLATE_WIDTH * this.TRANSLATE_WIDTH);
             this.data.fill(0);
 
             ctx.fillStyle = this.BLACK;
@@ -169,10 +169,11 @@
                     train: true
                 };
 
-                this.sendData(json);
                 // 清空客户端训练集
                 this.trainingRequestCount = 0;
                 this.trainArray = [];
+
+                this.sendData(json);
             }
         },
 
@@ -197,7 +198,7 @@
             }
             let responseJson = JSON.parse(xmlHttp.responseText);
             if(xmlHttp.responseText && responseJson.type === 'test') {
-                this.INFO.info("The neural network predicts you wrote a '" + responseJSON.result + "'");
+                this.INFO.info("The neural network predicts you wrote a '" + responseJson.result + "'");
             }
         },
 

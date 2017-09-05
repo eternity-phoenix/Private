@@ -39,7 +39,7 @@ class JSONHandler(BaseHTTPRequestHandler):
         var_len = int(self.headers.get('Content-Length'))
         #content = self.rfile.read(var_len)
         # payload = json.loads(content)
-        payload = json.load(self.rfile)
+        payload = json.loads(self.rfile.read(var_len))
 
         # 如果是训练请求，训练然后保存训练完的神经网络
         if payload.get('train'):
@@ -60,7 +60,22 @@ class JSONHandler(BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
         if response:
-            json.dump(response, self.wfile)
+            self.wfile.write(json.dumps(response).encode('utf-8'))
+
+    def do_GET(self):
+        if self.path == '/' or self.path.find('.') > 0:
+            if self.path == '/':
+                file = 'ocr.html'
+            else:
+                file =  self.path.split('/')[-1]
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            with open(file, 'rb') as f:
+                self.wfile.write(f.read())
+        else:
+            response_code = 404
 
 
 if __name__ == '__main__':

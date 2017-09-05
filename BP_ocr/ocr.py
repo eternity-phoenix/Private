@@ -124,7 +124,7 @@ class OCRNeuralNetwork(object):
             '''
             LEARNING_RATE是学习步进，这里我们设置成0.1，步子大虽然学得快，但也容易扭到，步子小得到的结果会更精准。
             '''
-            self.theta1 += self.LEARNING_RATE * np.dot(np.mat(hidden_errors), np.mat(data.y0))
+            self.theta1 += self.LEARNING_RATE * np.dot(np.mat(hidden_errors), np.mat(data['y0']))
             self.theta2 += self.LEARNING_RATE * np.dot(np.mat(output_errors), np.mat(y1).T)
             self.hidden_layer_bias += self.LEARNING_RATE * output_errors
             self.input_layer_bias += self.LEARNING_RATE * hidden_errors
