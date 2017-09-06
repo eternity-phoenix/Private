@@ -35,7 +35,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="arrowstyle.png" />
+    <Content Include="connectionstyle.png" />
+    <Content Include="linestyle.png" />
+    <Content Include="marker.jpg" />
     <Content Include="ReadMe.txt" />
+    <Content Include="subplot.jpg" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />

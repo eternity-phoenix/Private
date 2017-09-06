@@ -22,9 +22,11 @@
   <ItemGroup>
     <Content Include="data.csv" />
     <Content Include="dataLabels.csv" />
+    <Content Include="nn.json" />
     <Content Include="ocr.html" />
     <Content Include="ocr.js" />
     <Content Include="README.TXT" />
+    <Content Include="sigmoid函数.png" />
     <Content Include="神经网络.png" />
     <Content Include="节点计算.png" />
   </ItemGroup>
