@@ -120,9 +120,12 @@
             offset: new AMap.Pixel(0, -30)
         });
 
+        //地址补完的使用，参考输入提示后查询。
         var auto = new AMap.Autocomplete({
+            //通过id指定输入元素
             input: "work-location"
         });
+        //添加事件监听，在选择补完的地址后调用workLocationSelected
         AMap.event.addListener(auto, "select", workLocationSelected);
 
 
@@ -136,12 +139,14 @@
             loadWorkLocation()
         }
 
+        // 使用打开服务器 python -m http.server 8080
         function importRentInfo(fileInfo) {
             var file = fileInfo.files[0].name;
             loadRentLocationByFile(file);
         }
 
         function workLocationSelected(e) {
+            //更新工作地点，加载公交到达圈
             workAddress = e.poi.name;
             loadWorkLocation();
         }
@@ -156,11 +161,12 @@
             });
         }
 
-
+        //loadWorkRange的实现，在地图上绘制到达圈，参考：公交到达圈。
         function loadWorkRange(x, y, t, color, v) {
             arrivalRange.search([x, y], t, function (status, result) {
                 if (result.bounds) {
                     for (var i = 0; i < result.bounds.length; i++) {
+                        //新建多边形对象
                         var polygon = new AMap.Polygon({
                             map: map,
                             fillColor: color,
@@ -169,6 +175,7 @@
                             strokeOpacity: "0.8",
                             strokeWeight: 1
                         });
+                        //得到到达圈的多边形路径
                         polygon.setPath(result.bounds[i]);
                         polygonArray.push(polygon);
                     }
@@ -178,6 +185,7 @@
                 });
         }
 
+        //addMarkerByAddress的实现参考：按起终点名称规划路线与点标记。
         function addMarkerByAddress(address) {
             var geocoder = new AMap.Geocoder({
                 city: "成都",
@@ -195,8 +203,11 @@
                     rentMarkerArray.push(rentMarker);
 
                     rentMarker.content = "<div>房源：<a target = '_blank' href='http://cd.58.com/pinpaigongyu/?key=" + address + "'>" + address + "</a><div>"
+                    //在房源标记被点击时打开
                     rentMarker.on('click', function (e) {
+                        //鼠标移到标记上会显示标记content属性的内容
                         infoWindow.setContent(e.target.content);
+                        //在标记的位置打开窗体
                         infoWindow.open(map, e.target.getPosition());
                         if (amapTransfer) amapTransfer.clear();
                         amapTransfer = new AMap.Transfer({
@@ -226,7 +237,9 @@
             rentMarkerArray = [];
         }
 
+        //loadWorkLocation的实现，这部分包含了地理编码的内容，参考正向地理编码（地址-坐标）。
         function loadWorkLocation() {
+            //首先清空地图上已有的到达圈
             delWorkLocation();
             var geocoder = new AMap.Geocoder({
                 city: "成都",
@@ -238,22 +251,29 @@
                     var geocode = result.geocodes[0];
                     x = geocode.location.getLng();
                     y = geocode.location.getLat();
+                    //加载工作地点标记
                     loadWorkMarker(x, y);
+                    //加载60分钟内工作地点到达圈
                     loadWorkRange(x, y, 60, "#3f67a5", vehicle);
+                    //地图移动到工作地点的位置
                     map.setZoomAndCenter(12, [x, y]);
                 }
             })
         }
 
         function loadRentLocationByFile(fileName) {
+            //先删除现有的房源标记
             delRentLocation();
+            //所有的地点都记录在集合中
             var rent_locations = new Set();
+            //jquery操作
             $.get(fileName, function (data) {
                 data = data.split("\n");
                 data.forEach(function (item, index) {
                     rent_locations.add(item.split(",")[1]);
                 });
                 rent_locations.forEach(function (element, index) {
+                    //加上房源标记
                     addMarkerByAddress(element);
                 });
             });
