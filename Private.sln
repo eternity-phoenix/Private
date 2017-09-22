@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "BP_ocr", "BP_ocr\BP_ocr.pyproj", "{6BEA3374-22FB-489D-8EB4-4701E6598E60}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "高德API_Python解决租房问题", "高德API_Python解决租房问题\高德API_Python解决租房问题.pyproj", "{88CD7314-7876-4BD2-8D6B-EC4C05C0D034}"
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "色情图片识别", "色情图片识别\色情图片识别.pyproj", "{B0B28E4D-46A4-47B9-8C97-EA0A80DF9BB6}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "django", "django\django.pyproj", "{F2CE8505-4AF4-4CE6-A1CD-2CB70375AA00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,8 @@ Global
 		{88CD7314-7876-4BD2-8D6B-EC4C05C0D034}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0B28E4D-46A4-47B9-8C97-EA0A80DF9BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B0B28E4D-46A4-47B9-8C97-EA0A80DF9BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2CE8505-4AF4-4CE6-A1CD-2CB70375AA00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2CE8505-4AF4-4CE6-A1CD-2CB70375AA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -329,3 +329,18 @@ class Nude(object):
             self.merge_regions[to_index].append(_from)
             return
 
+    def _merge(self, detected_regions, merge_regions):
+        # 新建列表 new_detected_regions 
+        # 其元素将是包含一些代表像素的 Skin 对象的列表
+        # new_detected_regions 的元素即代表皮肤区域，元素索引为区域号
+        new_detected_regions = []
+
+        # 将 merge_regions 中的元素中的区域号代表的所有区域合并
+        for index, region in enumerate(merge_regions):
+            try:
+                new_detected_regions[index]
+            except IndexError:
+                new_detected_regions.append([])
+            for r_index in region:
+                new_detected_regions[index].extend(detected_regions[r_index])
+                detected_regions[r_index] = []
