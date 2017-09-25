@@ -344,3 +344,64 @@ class Nude(object):
             for r_index in region:
                 new_detected_regions[index].extend(detected_regions[r_index])
                 detected_regions[r_index] = []
+
+        # 添加剩下的其余皮肤区域到 new_detected_regions
+        for region in detected_regions:
+            if len(region) > 0:
+                new_detected_regions.append(region)
+
+        # 清理 new_detected_regions
+        self._clear_regions(new_detected_regions)
+
+    # 皮肤区域清理函数
+    # 只保存像素数大于指定数量的皮肤区域
+    def _clear_regions(self, detected_regions):
+        for region in detected_regions:
+            if len(region) > 30:
+                self.skin_regions.append(region)
+
+    # 分析区域
+    def _analyse_regions(self):
+        # 如果皮肤区域小于 3 个，不是色情
+        if len(self.skin_regions) < 3:
+            self.message = "Less than 3 skin regions ({_skin_regions_size})".format(
+                _skin_regions_size=len(self.skin_regions))
+            self.result = False
+            return self.result
+        
+        # 为皮肤区域排序
+        self.skin_regions = sorted(self.skin_regions, key=lambda s: len(s), reverse=True)
+
+        # 计算皮肤区域总像素数
+        total_skin = float(sum())
+
+    # 将在源文件目录生成图片文件，将皮肤区域可视化
+    def showSkinRegions(self):
+        '''
+        Nude 类如果就这样完成了，最后运行脚本时只能得到一些真或假的结果，我们需要更直观的感受程序的分析效果，我们可以生成一张原图的副本，不过这个副本图片中只有黑白色，白色代表皮肤区域，那么这样我们能直观感受到程序分析的效果了
+
+        前面的代码中我们有获得图像的像素的 RGB 值的操作，设置像素的 RGB 值也就是其逆操作，还是很简单的，不过注意设置像素的 RGB 值时不能在原图上操作
+        '''
+
+
+if __name__ == '__main__':
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Detected nudity in images.')
+    parser.add_argument('files', metavar='image', nargs='+', help='Images you wish to test')
+    parser.add_argument('-r', metavar='--resize', action='store_true', help='Reduce image size to increase speed of scanning')
+    parser.add_argument('-v', '--visualization', action='store_true', help='Generating areas of skin image')
+
+    args = parser.parse_args()
+
+    for fname in args.files:
+        if os.path.isfile(fname):
+            n = Nude(fname)
+            if args.resize:
+                n.resize(maxheight=800, maxwidth600)
+            n.parse()
+            if args.visualization:
+                n.showSkinRegions()
+            print(n.result, n.inspect())
+        else:
+            print(fname, "is not a file")

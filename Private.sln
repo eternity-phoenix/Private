@@ -13,6 +13,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "色情图片识别", "色�
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "django", "django\django.pyproj", "{F2CE8505-4AF4-4CE6-A1CD-2CB70375AA00}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "numpy", "numpy\numpy.pyproj", "{301DE5EF-50EE-4AA3-8186-5FE5A5AC8628}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,8 @@ Global
 		{B0B28E4D-46A4-47B9-8C97-EA0A80DF9BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2CE8505-4AF4-4CE6-A1CD-2CB70375AA00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F2CE8505-4AF4-4CE6-A1CD-2CB70375AA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{301DE5EF-50EE-4AA3-8186-5FE5A5AC8628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{301DE5EF-50EE-4AA3-8186-5FE5A5AC8628}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
