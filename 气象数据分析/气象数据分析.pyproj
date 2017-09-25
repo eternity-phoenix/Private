@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>b0b28e4d-46a4-47b9-8c97-ea0a80df9bb6</ProjectGuid>
+    <ProjectGuid>01d04f91-0d81-45a1-b9a7-61e521d72273</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>色情图片识别.py</StartupFile>
+    <StartupFile>线性分析.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>色情图片识别</Name>
-    <RootNamespace>色情图片识别</RootNamespace>
+    <Name>气象数据分析</Name>
+    <RootNamespace>气象数据分析</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,11 +21,26 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="色情图片识别.py" />
+    <Compile Include="气象数据分析.py" />
+    <Compile Include="线性分析.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="0.jpg" />
-    <Content Include="0_Nude.jpg" />
+    <Content Include="readme.txt" />
+    <Content Include="WeatherData\asti_270615.csv" />
+    <Content Include="WeatherData\bologna_270615.csv" />
+    <Content Include="WeatherData\cesena_270615.csv" />
+    <Content Include="WeatherData\faenza_270615.csv" />
+    <Content Include="WeatherData\ferrara_270615.csv" />
+    <Content Include="WeatherData\mantova_270615.csv" />
+    <Content Include="WeatherData\milano_270615.csv" />
+    <Content Include="WeatherData\piacenza_270615.csv" />
+    <Content Include="WeatherData\ravenna_270615.csv" />
+    <Content Include="WeatherData\torino_270615.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WeatherData\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

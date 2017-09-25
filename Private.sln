@@ -15,6 +15,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "django", "django\django.pyp
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "numpy", "numpy\numpy.pyproj", "{301DE5EF-50EE-4AA3-8186-5FE5A5AC8628}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "气象数据分析", "气象数据分析\气象数据分析.pyproj", "{01D04F91-0D81-45A1-B9A7-61E521D72273}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,8 @@ Global
 		{F2CE8505-4AF4-4CE6-A1CD-2CB70375AA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{301DE5EF-50EE-4AA3-8186-5FE5A5AC8628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{301DE5EF-50EE-4AA3-8186-5FE5A5AC8628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01D04F91-0D81-45A1-B9A7-61E521D72273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D04F91-0D81-45A1-B9A7-61E521D72273}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

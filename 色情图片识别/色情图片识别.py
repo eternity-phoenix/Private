@@ -168,7 +168,16 @@ class Nude(object):
                 # 用来记录相邻像素中肤色像素所在的区域号，初始化为 -1
                 region = -1
                 # 遍历每一个相邻像素的索引
-                for index in check_indexes:
+                for idx, index in enumerate(check_indexes):
+                    # 如果当前像素是第一列,那么他没有左边相邻像素
+                    if x == 0 and (idx == 0 or idx == 1):
+                        continue
+                    # 如果当前像素是第一行,那么,他没有上方相邻像素
+                    if y == 0 and (idx == 1 or idx == 2 or idx == 3):
+                        continue
+                    # 如果当前像素是最后一列,那么,他没有右上方相邻像素
+                    if x == self.width - 1 and idx == 3:
+                        continue
                     # 尝试索引相邻像素的 Skin 对象，没有则跳出循环
                     try:
                         self.skin_map[index]
@@ -373,7 +382,32 @@ class Nude(object):
         self.skin_regions = sorted(self.skin_regions, key=lambda s: len(s), reverse=True)
 
         # 计算皮肤区域总像素数
-        total_skin = float(sum())
+        total_skin = sum([len(skin_region) for skin_region in self.skin_regions])
+
+        # 如果皮肤区域与整个图像的比值小于 15%，那么不是色情图片
+        if total_skin / self.total_pixels * 100 < 15:
+            self.message = "Total skin percentage lower than 15 ({:.2f})".format(total_skin / self.total_pixels * 100)
+            self.result = False
+            return self.result
+        # 如果最大皮肤区域小于总皮肤面积的 45%，不是色情图片
+        if len(self.skin_regions[0]) / total_skin * 100 < 45:
+            self.message = "The biggest region contains less than 45 ({:.2f})".format(len(self.skin_regions[0]) / total_skin * 100)
+            self.result = False
+            return self.result
+        # 皮肤区域数量超过 60个，不是色情图片
+        if len(self.skin_regions) > 60:
+            self.message = "More than 60 skin regions ({})".format(len(self.skin_regions))
+            self.result = False
+            return self.result
+
+        # 其它情况为色情图片
+        self.message = "Nude!!"
+        self.result = True
+        return self.result
+
+    def inspect(self):
+        _image = '{} {} {}×{}'.format(self.image.filename, self.image.format, self.width, self.height)
+        return "{_image}: result={_result} message='{_message}'".format(_image=_image, _result=self.result, _message=self.message)
 
     # 将在源文件目录生成图片文件，将皮肤区域可视化
     def showSkinRegions(self):
@@ -382,6 +416,38 @@ class Nude(object):
 
         前面的代码中我们有获得图像的像素的 RGB 值的操作，设置像素的 RGB 值也就是其逆操作，还是很简单的，不过注意设置像素的 RGB 值时不能在原图上操作
         '''
+        # 未得出结果时方法返回
+        if self.result is None:
+            return
+        # 皮肤像素的 ID 的集合
+        skinIdSet = set()
+        # 将原图做一份拷贝
+        simage = self.image
+        # 加载数据
+        simageData = simage.load()
+
+         # 将皮肤像素的 id 存入 skinIdSet
+        for sr in self.skin_regions:
+            for pixel in sr:
+                skinIdSet.add(pixel.id)
+
+        # 将图像中的皮肤像素设为白色，其余设为黑色
+        for pixel in self.skin_map:
+            if pixel.id not in skinIdSet:
+                simageData[pixel.x, pixel.y] = 0, 0, 0
+            else:
+                simageData[pixel.x, pixel.y] = 255, 255, 255
+        
+        # 源文件绝对路径
+        filePath = os.path.abspath(self.image.filename)
+        # 源文件所在目录
+        fileDirectory = os.path.dirname(filePath) + '/'
+        # 源文件的完整文件名
+        fileFullName = os.path.basename(filePath)
+        # 分离源文件的完整文件名得到文件名和扩展名
+        fileName, fileExtName = os.path.splitext(fileFullName)
+        # 保存图片
+        simage.save('{}{}_{}{}'.format(fileDirectory, fileName,'Nude' if self.result else 'Normal', fileExtName))
 
 
 if __name__ == '__main__':
@@ -389,7 +455,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Detected nudity in images.')
     parser.add_argument('files', metavar='image', nargs='+', help='Images you wish to test')
-    parser.add_argument('-r', metavar='--resize', action='store_true', help='Reduce image size to increase speed of scanning')
+    parser.add_argument('-r', '--resize', action='store_true', help='Reduce image size to increase speed of scanning')
     parser.add_argument('-v', '--visualization', action='store_true', help='Generating areas of skin image')
 
     args = parser.parse_args()
@@ -398,7 +464,7 @@ if __name__ == '__main__':
         if os.path.isfile(fname):
             n = Nude(fname)
             if args.resize:
-                n.resize(maxheight=800, maxwidth600)
+                n.resize(maxheight=800, maxwidth=600)
             n.parse()
             if args.visualization:
                 n.showSkinRegions()
