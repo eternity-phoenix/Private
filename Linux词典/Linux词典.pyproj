@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>01d04f91-0d81-45a1-b9a7-61e521d72273</ProjectGuid>
+    <ProjectGuid>d0254fb3-fb65-423c-8066-bb41fcd03530</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>风向玫瑰图.py</StartupFile>
+    <StartupFile>calculator.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>气象数据分析</Name>
-    <RootNamespace>气象数据分析</RootNamespace>
+    <Name>Linux词典</Name>
+    <RootNamespace>Linux词典</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,35 +21,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="气象数据分析.py" />
-    <Compile Include="湿度分析2.py">
+    <Compile Include="calculator.py" />
+    <Compile Include="selection_received.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="湿度数据分析.py">
+    <Compile Include="webview.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="气象线性分析.py">
+    <Compile Include="词典.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="风向玫瑰图.py">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="readme.txt" />
-    <Content Include="WeatherData\asti_270615.csv" />
-    <Content Include="WeatherData\bologna_270615.csv" />
-    <Content Include="WeatherData\cesena_270615.csv" />
-    <Content Include="WeatherData\faenza_270615.csv" />
-    <Content Include="WeatherData\ferrara_270615.csv" />
-    <Content Include="WeatherData\mantova_270615.csv" />
-    <Content Include="WeatherData\milano_270615.csv" />
-    <Content Include="WeatherData\piacenza_270615.csv" />
-    <Content Include="WeatherData\ravenna_270615.csv" />
-    <Content Include="WeatherData\torino_270615.csv" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WeatherData\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
