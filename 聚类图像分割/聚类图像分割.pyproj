@@ -2,15 +2,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>e4034200-5fdf-413d-abe9-024da1d8746f</ProjectGuid>
+    <ProjectGuid>8458a41a-f57a-44aa-8020-15623e12e4cd</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>DragonCurve.py</StartupFile>
+    <StartupFile>聚类图像分割.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>分形</Name>
-    <RootNamespace>分形</RootNamespace>
+    <Name>聚类图像分割</Name>
+    <RootNamespace>聚类图像分割</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,13 +21,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DragonCurve.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FractalTree.py" />
-    <Compile Include="KochSnowflake.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="聚类图像分割.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

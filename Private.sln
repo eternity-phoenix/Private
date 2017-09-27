@@ -25,6 +25,10 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Linux词典", "Linux词典\
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "分形", "分形\分形.pyproj", "{E4034200-5FDF-413D-ABE9-024DA1D8746F}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "聚类图像分割", "聚类图像分割\聚类图像分割.pyproj", "{8458A41A-F57A-44AA-8020-15623E12E4CD}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "flask sse使用", "flask sse使用\flask sse使用.pyproj", "{72531AB2-DD43-473E-86A4-4E980D9A96C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,10 @@ Global
 		{D0254FB3-FB65-423C-8066-BB41FCD03530}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4034200-5FDF-413D-ABE9-024DA1D8746F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E4034200-5FDF-413D-ABE9-024DA1D8746F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8458A41A-F57A-44AA-8020-15623E12E4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8458A41A-F57A-44AA-8020-15623E12E4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72531AB2-DD43-473E-86A4-4E980D9A96C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72531AB2-DD43-473E-86A4-4E980D9A96C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
